@@ -23,17 +23,3 @@ model Invoice {
 
   @@map("invoices")
 }
-
-// {
-// 'Quantidade energia elétrica (kWh)': '50', 
-// 'Valor energia elétrica (R$)': '47,62', 
-// 'Quantidade energia SCEEE s/ICMS': '1.087', 
-// 'Valor energia SCEEE s/ICMS (R$)': '552,47', 
-// 'Quantidade energia compensada GD I': '1.087', 
-// 'Valor energia compensada GD I (R$)': '-529,72', 
-// 'Contrib. Ilum Publica Municipal': '41,19', 
-
-// 'Número do cliente': '7202788969', 
-// 'Mês de referência': 'NOV/2023', 
-// 'url_file': '3001165684-11-2023.pdf'
-// }
