@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Invoice {
+  id                 String @id @default(uuid()) @db.Uuid
+  num_client         Int
+  account_month      Int
+  account_year       Int
+  url_file           String?
+  amount_electricity Int
+  value_electricity  Float
+  amount_sceee       Int
+  value_sceee        Float
+  amount_compensated Int
+  value_compensated  Float
+  value_street       Float
+
+  @@map("invoices")
+}
+
+// {
+// 'Quantidade energia elétrica (kWh)': '50', 
+// 'Valor energia elétrica (R$)': '47,62', 
+// 'Quantidade energia SCEEE s/ICMS': '1.087', 
+// 'Valor energia SCEEE s/ICMS (R$)': '552,47', 
+// 'Quantidade energia compensada GD I': '1.087', 
+// 'Valor energia compensada GD I (R$)': '-529,72', 
+// 'Contrib. Ilum Publica Municipal': '41,19', 
+
+// 'Número do cliente': '7202788969', 
+// 'Mês de referência': 'NOV/2023', 
+// 'url_file': '3001165684-11-2023.pdf'
+// }
