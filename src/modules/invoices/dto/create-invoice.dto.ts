@@ -9,9 +9,9 @@ import {
   Length,
 } from 'class-validator';
 export class CreateInvoiceDto {
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  num_client: number;
+  num_client: string;
 
   @IsInt()
   @IsNotEmpty()

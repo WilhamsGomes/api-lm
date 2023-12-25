@@ -56,7 +56,7 @@ export class InvoicesService {
     return invoice;
   }
 
-  async findOneByClient(num_client: number) {
+  async findOneByClient(num_client: string) {
     const invoice = await this.invoicesRepo.findAll({
       where: { num_client: num_client },
     });
@@ -68,6 +68,12 @@ export class InvoicesService {
   }
 
   async update(id: string, updateInvoiceDto: UpdateInvoiceDto) {
+    const invoice = await this.findOneById(id);
+
+    if (!invoice) {
+      throw new NotFoundException();
+    }
+
     const {
       account_month,
       account_year,
@@ -100,6 +106,12 @@ export class InvoicesService {
   }
 
   async remove(id: string) {
+    const invoice = await this.findOneById(id);
+
+    if (!invoice) {
+      throw new NotFoundException();
+    }
+
     await this.invoicesRepo.delete({
       where: { id: id },
     });

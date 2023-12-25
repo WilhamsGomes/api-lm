@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { InvoicesService } from './invoices.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
@@ -26,22 +27,25 @@ export class InvoicesController {
   }
 
   @Get(':id')
-  findOneById(@Param('id') id: string) {
+  findOneById(@Param('id', ParseUUIDPipe) id: string) {
     return this.invoicesService.findOneById(id);
   }
 
   @Get('client/:num_client')
-  findOneByClient(@Param('num_client') id: string) {
-    return this.invoicesService.findOneByClient(+id);
+  findOneByClient(@Param('num_client', ParseUUIDPipe) id: string) {
+    return this.invoicesService.findOneByClient(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateInvoiceDto: UpdateInvoiceDto) {
+  update(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateInvoiceDto: UpdateInvoiceDto,
+  ) {
     return this.invoicesService.update(id, updateInvoiceDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.invoicesService.remove(id);
   }
 }

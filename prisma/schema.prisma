@@ -9,15 +9,15 @@ datasource db {
 
 model Invoice {
   id                 String @id @default(uuid()) @db.Uuid
-  num_client         Int
+  num_client         String
   account_month      Int
   account_year       Int
   url_file           String?
-  amount_electricity Int
+  amount_electricity Float
   value_electricity  Float
-  amount_sceee       Int
+  amount_sceee       Float
   value_sceee        Float
-  amount_compensated Int
+  amount_compensated Float
   value_compensated  Float
   value_street       Float
 
