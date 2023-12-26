@@ -32,7 +32,7 @@ export class InvoicesController {
   }
 
   @Get('client/:num_client')
-  findOneByClient(@Param('num_client', ParseUUIDPipe) id: string) {
+  findOneByClient(@Param('num_client') id: string) {
     return this.invoicesService.findOneByClient(id);
   }
 
