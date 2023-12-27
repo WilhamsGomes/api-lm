@@ -3,7 +3,7 @@ import { IsIn, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 export class ReadDashDto {
   @IsString()
   @IsNotEmpty()
-  @IsIn(['count', 'month', 'year'])
+  @IsIn(['count', 'date'])
   aggr: string;
 
   @IsString()

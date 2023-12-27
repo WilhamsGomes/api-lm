@@ -6,7 +6,6 @@ import {
   Min,
   IsInt,
   Max,
-  Length,
 } from 'class-validator';
 export class CreateInvoiceDto {
   @IsString()
@@ -21,7 +20,6 @@ export class CreateInvoiceDto {
 
   @IsInt()
   @IsNotEmpty()
-  @Length(4, 4)
   account_year: number;
 
   @IsString()
