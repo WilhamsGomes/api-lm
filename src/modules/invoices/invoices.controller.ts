@@ -7,10 +7,13 @@ import {
   Param,
   Delete,
   ParseUUIDPipe,
+  StreamableFile,
 } from '@nestjs/common';
 import { InvoicesService } from './invoices.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 
 @Controller('invoices')
 export class InvoicesController {
@@ -34,6 +37,12 @@ export class InvoicesController {
   @Get('client/:num_client')
   findOneByClient(@Param('num_client') id: string) {
     return this.invoicesService.findOneByClient(id);
+  }
+
+  @Get('file-download/:fileId')
+  getFile(@Param('fileId') id: string): StreamableFile {
+    const file = createReadStream(join(process.cwd(), `/public/${id}`));
+    return new StreamableFile(file);
   }
 
   @Patch(':id')
